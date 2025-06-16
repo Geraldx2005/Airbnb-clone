@@ -1,0 +1,64 @@
+.contain {
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  padding: 30px;
+  font-size: 19px;
+  gap: 20px;
+}
+
+.items {
+  width: 100%;
+  aspect-ratio: 1 / 1.2;
+}
+
+.list-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  margin-bottom: 12px;
+}
+
+.contain img:hover {
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.add-btn {
+  width: 75px;
+  height: 75px;
+  background-color: rgba(245, 245, 245, 0.7);
+  border: 2px solid black;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  font-size: 75px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+  background-color: white;
+}

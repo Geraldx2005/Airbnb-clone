@@ -1,0 +1,14 @@
+<!-- "layouts/boilerplate" refers to views/layouts/boilerplate.ejs -->
+<% layout("layouts/boilerplate") -%>
+<div class="contain">
+  <% for (let list of allListings) { %>
+  <a href="/listings/<%= list._id %>">
+    <div class="items">
+      <img class="list-img" src="<%= list.image %>" alt="Listing" loading="lazy" />
+      <h4><%= list.title %></h4>
+      <h6>&#8377;: <%= list.price.toLocaleString("en-IN") %> / night</h6>
+    </div>
+  </a>
+  <% } %>
+  <a href="/listings/new"><button class="add-btn">+</button></a>
+</div>

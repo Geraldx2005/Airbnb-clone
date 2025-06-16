@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+body {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.contain {
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

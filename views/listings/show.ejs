@@ -1,0 +1,80 @@
+<!-- "layouts/boilerplate" refers to views/layouts/boilerplate.ejs -->
+<% layout("layouts/boilerplate") %>
+<div class="contain">
+  <h1 class="heading"><%= listingData.title %></h1>
+  <img class="show-img" src="<%= listingData.image %>" alt="The place" />
+
+  <div class="details">
+    <ul class="details-list">
+      <h1>Details about the place:</h1>
+      <li><b>Description:</b> <%= listingData.description %></li>
+      <li><b>Price:</b> &#8377;: <%= listingData.price.toLocaleString("en-IN") %></li>
+      <li><b>Location:</b> <%= listingData.location %></li>
+      <li><b>Country:</b> <%= listingData.country %></li>
+      <li><b>Owner:</b> <%= listingData.owner.username %></li>
+    </ul>
+
+    <% if( currentUser && currentUser._id.equals(listingData.owner._id)) {%>
+    <div class="buttons">
+      <form method="get" action="/listings/<%= listingData._id %>/edit">
+        <button>Edit</button>
+      </form>
+
+      <form method="post" action="/listings/<%= listingData._id %>?_method=DELETE">
+        <button>Delete</button>
+      </form>
+    </div>
+  </div>
+  <% } %>
+
+  <% if (currentUser) { %>
+  <div class="review-container">
+    <h1>Leave a Review</h1>
+    <form method="post" action="/review/<%= listingData.id %>" class="review-form needs-validation" novalidate>
+      <div>
+        <label for="rating">Rating:</label>
+        <input type="range" class="form-range" id="rating" name="review[rating]" min="1" max="5" required />
+      </div>
+
+      <div class="comment-div">
+        <label for="comment">Comment:</label>
+        <textarea
+          class="form-control txt-area"
+          id="comment"
+          rows="5"
+          name="review[comment]"
+          placeholder="Write some comments here..."
+          required
+        ></textarea>
+        <div class="valid-feedback">Looks fine!</div>
+        <div class="invalid-feedback">Please add some comments for review</div>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <% } %>
+
+  <hr />
+  <h1>All Reviews</h1>
+  <div class="reviews">
+    <% if (listingData.reviews.length > 0) { %> <% listingData.reviews.forEach((review) => { %>
+    <div class="review">
+      <div class="rev-details">
+        <h4>@<%= review.author.username %></h4>
+        <p><b>Rating:</b> <%= review.rating %>/5</p>
+        <p><b>Comment:</b> <%= review.comment %></p>
+      </div>
+      <form method="post" action="/review/del?_method=DELETE" class="rev-del-form">
+        <input type="hidden" name="listingId" value="<%= listingData._id %>"> 
+        <input type="hidden" name="reviewId" value="<%= review._id %>">
+        <% if (currentUser) { %>
+        <button class="rev-del-btn"><i class="fa-solid fa-trash"></i></button>
+        <% } %>
+      </form>
+    </div>
+    <% }) %> <% } else { %>
+    <p>No reviews yet.</p>
+    <% } %>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<!-- "layouts/boilerplate" refers to views/layouts/boilerplate.ejs -->
+<% layout("layouts/boilerplate", {title: "New Listing Form", pageCSS:"newForm"}) %>
+<div class="contain">
+  <form method="POST" action="/listings" class="needs-validation" novalidate>
+    <h1>Create a Listing</h1>
+    <label for="title" class="form-label">Enter Title:
+      <input name="title" class="form-control" id="title" placeholder="Add a catchy title" type="text" required />
+      <div class="valid-feedback">Looks fine!</div>
+      <div class="invalid-feedback">Please enter title!</div>
+    </label>
+    <label for="description" class="form-label">Enter Description:
+      <input name="description" class="form-control" id="description" placeholder="enter description" type="text" required/>
+      <div class="valid-feedback">Looks fine!</div>
+      <div class="invalid-feedback">Please enter description!</div>
+    </label>
+    <label for="image" class="form-label">Enter Image url/link:
+      <input name="image" class="form-control" id="image" placeholder="enter image URL/Link" type="text" required />
+      <div class="valid-feedback">Looks fine!</div>
+      <div class="invalid-feedback">Please enter image url!</div>
+    </label>
+    <div class="joinDiv">
+      <label for="price" class="form-label">Enter Price:
+        <input name="price" class="form-control" id="price" placeholder="enter price" type="number" required />
+        <div class="valid-feedback">Looks fine!</div>
+        <div class="invalid-feedback">Please enter price!</div>
+      </label>
+      <label for="country" class="form-label">Enter Country:
+        <input name="country" class="form-control" id="country" placeholder="enter country" type="text" required />
+        <div class="valid-feedback">Looks fine!</div>
+        <div class="invalid-feedback">Please enter country!</div>
+      </label>
+    </div>
+
+    <label for="location" class="form-label">Enter Location:
+      <input name="location" class="form-control" id="location" placeholder="enter location" type="text" required />
+      <div class="valid-feedback">Looks fine!</div>
+      <div class="invalid-feedback">Please enter location!</div>
+    </label>
+    <button class="sub-btn">Create Listing</button>
+  </form>
+</div>

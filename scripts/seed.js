@@ -13,7 +13,7 @@ seedDB();
 async function seedDB() {
     await Listing.deleteMany({});
     let modSampleData = sampleData.map((item) => {
-        return {...item, owner: "684820a668ad51dbf0d6be4e"} // 
+        return {...item, owner: "685077cd96a4ffc396fff562"};
     });
     await Listing.insertMany(modSampleData);
     console.log("Data seeded Successfully");

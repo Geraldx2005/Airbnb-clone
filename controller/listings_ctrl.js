@@ -34,7 +34,10 @@ const renderShowPage = async (req, res) => {
 
 // Creates a new listing and adds it to the database.
 const createListing = async (req, res) => {
+  let url = req.file.path;
+  let filename = req.file.filename;
   req.body.owner = req.user._id; // Add the owner id to the listing data from the current user who is logged in.
+  req.body.image = { url, filename }; // Add the image data to the listing data.
   await Listing.create(req.body);
 
   req.flash("success", "New listing added successfully!");

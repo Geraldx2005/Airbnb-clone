@@ -1,7 +1,7 @@
 <!-- "layouts/boilerplate" refers to views/layouts/boilerplate.ejs -->
 <% layout("layouts/boilerplate", {title: "New Listing Form", pageCSS:"newForm"}) %>
 <div class="contain">
-  <form method="POST" action="/listings" class="needs-validation" novalidate>
+  <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
     <h1>Create a Listing</h1>
     <label for="title" class="form-label">Enter Title:
       <input name="title" class="form-control" id="title" placeholder="Add a catchy title" type="text" required />
@@ -14,7 +14,7 @@
       <div class="invalid-feedback">Please enter description!</div>
     </label>
     <label for="image" class="form-label">Enter Image url/link:
-      <input name="image" class="form-control" id="image" placeholder="enter image URL/Link" type="text" required />
+      <input name="image" class="form-control" id="image" placeholder="enter image URL/Link" type="file" required />
       <div class="valid-feedback">Looks fine!</div>
       <div class="invalid-feedback">Please enter image url!</div>
     </label>

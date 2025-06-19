@@ -8,7 +8,6 @@ import session from "express-session";
 import flash from "connect-flash";
 import passport from "passport";
 import LocalStrategy from "passport-local";
-import User from "./models/user.js";
 const app = express();
 const port = 3000;
 
@@ -16,12 +15,13 @@ const port = 3000;
 import connectDB from "./config/db.js";
 import routes from "./routes/index.js";
 import expressError from "./utils/expressError.js";
+import User from "./models/user.js";
 
 // Conecting to database.
 dotenv.config();
 connectDB();
 
-// Setting the view engine to ejs.
+// Setting the view engine to jj.
 app.set("view engine", "ejs");
 
 // use ejs-locals for all ejs templates.

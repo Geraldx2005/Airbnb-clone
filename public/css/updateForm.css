@@ -77,3 +77,11 @@ input::placeholder{
 .joinDiv label {
   width: 100%;
 }
+
+.listing-image {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid rgba(169, 169, 169, 0.6);
+  border-radius: 10px;
+}

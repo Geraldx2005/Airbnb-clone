@@ -1,5 +1,6 @@
+// Load env variables at the very top (accessable throughout the app)
+import 'dotenv/config';
 import express from "express";
-import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 import methodOverride from "method-override";
@@ -11,15 +12,14 @@ import LocalStrategy from "passport-local";
 const app = express();
 const port = 3000;
 
+// Conecting to database.
+connectDB();
+
 // Importing from other files.
 import connectDB from "./config/db.js";
 import routes from "./routes/index.js";
 import expressError from "./utils/expressError.js";
 import User from "./models/user.js";
-
-// Conecting to database.
-dotenv.config();
-connectDB();
 
 // Setting the view engine to jj.
 app.set("view engine", "ejs");
@@ -62,7 +62,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 // Passport local strategy for user authentication.
 passport.use(new LocalStrategy(User.authenticate()));
-// Passport serialize and deseraloze user for session mansgemnet.
+// Passport serialize and deserialize user for session management.
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

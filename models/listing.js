@@ -12,6 +12,17 @@ let listingSchema = new mongoose.Schema({
   country: { type: String, required: true },
   reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  geometry: {
+    type: {
+      type: String, // Don't do `{ location: { type: String } }`
+      enum: ["Point"], // 'location.type' must be 'Point'
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    }
+  },
 });
 
 let Listing = mongoose.model("Listing", listingSchema);
@@ -19,6 +30,7 @@ let Listing = mongoose.model("Listing", listingSchema);
 export default Listing;
 
 // IMPORTANT NOTE: ---->
-// When you define a Mongoose middleware (a.k.a. hooks) inside a model file, it is automatically attached to the schema.
-// Once the schema is compiled into a model using mongoose.model(), Mongoose handles calling the middleware for you
-// whenever the relevant action (like save, remove, findOneAndDelete, etc.) is triggered.
+// We only import packages where we actually use it.
+// Other files don’t need to import it again when using this.
+
+// This helps to keep the code clean and avoids unnecessary dependencies.

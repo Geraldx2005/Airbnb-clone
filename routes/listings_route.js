@@ -19,9 +19,6 @@ router.route("/")
   .get(asyncHandler(listingsCtrl.renderHomePage))
   // The post route which creates the listing and adds to database.(add button in the addform)
   .post(isAuthenticated, uploads.single('image'), validateListing, asyncHandler(listingsCtrl.createListing));
-//   .post(uploads.single('image'), function (req, res, next) {
-//     res.send(req.file)
-// })
 
 // The route gives a form to add listing to the form.(The add button)
 router.get("/new", isAuthenticated, listingsCtrl.renderAddForm);
@@ -30,7 +27,7 @@ router.route("/:id")
   // The show route which shows the details of the hotel in detail.
   .get(asyncHandler(listingsCtrl.renderShowPage))
   // The patch route which updates the data in the database. (The update button in the edit form)
-  .patch(isAuthenticated, isOwner, validateListing, asyncHandler(listingsCtrl.updateListing))
+  .patch(isAuthenticated, isOwner, uploads.single('image'), validateListing, asyncHandler(listingsCtrl.updateListing))
   // The delete route which deletes the listing from the database. (The delete button in the show page)
   .delete(isAuthenticated, isOwner, asyncHandler(listingsCtrl.deleteListing));
 

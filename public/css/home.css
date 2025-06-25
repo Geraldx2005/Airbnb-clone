@@ -20,7 +20,7 @@
   object-fit: cover;
   border-radius: 10px;
   transition: all 0.2s ease;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .contain img:hover {

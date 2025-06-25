@@ -12,8 +12,18 @@ seedDB();
 
 async function seedDB() {
     await Listing.deleteMany({});
+
+    // Modifying the sample data to include a fixed owner ID and coordinates.
     let modSampleData = sampleData.map((item) => {
-        return {...item, owner: "685077cd96a4ffc396fff562"};
+        return {...item, owner: "684820a668ad51dbf0d6be4e"};
+    });
+
+    // Adding fixed coordinated for all listings.
+    modSampleData.forEach((item) => {
+        item.geometry = {
+            type: "Point",
+            coordinates: [ 72.87872, 19.077793 ] // Mumbai coordinates
+        }
     });
     await Listing.insertMany(modSampleData);
     console.log("Data seeded Successfully");

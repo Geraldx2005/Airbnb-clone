@@ -3,10 +3,10 @@
   min-height: calc(100vh - 60px);
   background-color: white;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   padding: 30px;
   font-size: 19px;
-  gap: 20px;
+  gap: 10px;
 }
 
 .items {
@@ -33,13 +33,15 @@ a {
 }
 
 h4 {
-  font-size: 1.1rem;
+  font-size: 0.98rem;
   font-weight: 500;
+  margin: 2px;
 }
 
 h6 {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 400;
+  margin: 0;
 }
 
 .add-btn {

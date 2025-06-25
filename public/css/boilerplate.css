@@ -7,7 +7,7 @@
 
 nav {
   width: 100%;
-  height: 60px;
+  height: 80px;
   display: flex;
   background-color: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -28,13 +28,14 @@ nav {
 .auth-opt a{
   text-decoration: none;
   color: black;
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 8px 14px;
+  border-radius: 50px;
   transition: all 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .auth-opt a:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.13);
 }
 
 
@@ -140,4 +141,82 @@ footer{
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
+}
+
+.search-form {
+  flex: 1;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.search-span {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.search-input {
+  min-width: 100px;
+  width: 35rem;
+  max-width: 600px;
+  height: 100%;
+  padding: 8px 50px 8px 20px;
+  border: 1.5px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+  outline: none;
+  margin: 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-button {
+  height: 40px;
+  width: 40px;
+  color: white;
+  background-color: #ff385c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 8px;
+  padding: 5px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #f33457e8;
+}
+
+.search-button i {
+  font-size: 15px;
+}
+
+.add-listing {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-listing button{
+  font-size: 14px;
+  font-weight: 500;
+  background-color: transparent;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.add-listing button:hover {
+  background-color: #f0f0f0;
 }

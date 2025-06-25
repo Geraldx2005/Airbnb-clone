@@ -18,12 +18,27 @@
             <img class="logo" src="/images/airbnb logo.svg" alt="Airbnb">
         </div>
 
+            <form action="/listings/search" method="GET" class="search-form">
+                <div class="search-span">
+                    <input type="text" name="query" placeholder="Search for listings, places, or experiences" class="search-input">
+                    <button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+
         <div class="auth-opt">
             <% if (currentUser) { %>
-            <a href="/user/logout">Logout</a>
+                <div class="add-listing" onclick="window.location.href='/listings/new'">
+                    <button>Switch to hosting</button>
+                </div>
+            
+            <a href="/user/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
             <% } else { %>
+                <div class="add-listing" onclick="window.location.href='/user/signup'">
+                    <button>Become a host</button>
+                </div>
+
             <a href="/user/login">Login</a>
-            <a href="/user/signup">Signup</a>
+            <!-- <a href="/user/signup">Signup</a> -->
             <% } %>
         </div>  
     </nav>

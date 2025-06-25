@@ -178,3 +178,11 @@ button:hover {
 .mapboxgl-popup-close-button span {
 display: none;
 }
+
+.map-container {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}

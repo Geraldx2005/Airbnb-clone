@@ -25,7 +25,9 @@
       </form>
     </div>
   </div>
-  <% } %> <% if (currentUser) { %>
+  <% } %>
+
+  <% if (currentUser) { %>
   <div class="review-container">
     <h1>Leave a Review</h1>
     <form method="post" action="/review/<%= listingData.id %>" class="review-form needs-validation" novalidate>
@@ -97,9 +99,12 @@
     <% } %>
   </div>
 
-  <h3>Where you'll be</h3>
-  <!-- Map container with listing's coordinates passed as a data attribute -->
-  <div id="map" data-listing-info="<%= JSON.stringify(listingData) %>"></div>
+  <div class="map-container">
+    <h4>Where you'll be</h4>
+    <p><%= listingData.location %>, <%= listingData.country %></p>
+    <!-- Map container with listing's coordinates passed as a data attribute -->
+    <div id="map" data-listing-info="<%= JSON.stringify(listingData) %>"></div>
+  </div>
 </div>
 
 <script>
@@ -111,7 +116,7 @@
     "pk.eyJ1IjoiZ2VyYWxkeDIwMDUiLCJhIjoiY21jNmVhaDh2MTFldzJqb2wyM2NpanlqeSJ9.6T8PrQ0sFd_Khong_e6uLA";
   const map = new mapboxgl.Map({
     container: "map", // container ID
-    style: "mapbox://styles/mapbox/streets-v12", // style URL
+    // style: "mapbox://styles/mapbox/satellite-streets-v12", // style URL
     center: listingDetails.geometry.coordinates, // Parse the coordinates from the data attribute (string -> array) for the map's center
     zoom: 9, // starting zoom
   });

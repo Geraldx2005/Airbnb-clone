@@ -130,7 +130,7 @@ app.use("/user", routes.userRoute);
 // The correct and professionl way to send error 404 message.
 app.all('*', (req, res, next) => {
   console.warn(`404 triggered for ${req.method} ${req.originalUrl}`);
-  next(new ExpressError('Page Not Found', 404));
+  next(new expressError('Page Not Found', 404));
 });
 
 // Our custom error handler.

@@ -94,11 +94,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.all('*', (req, res, next) => {
-  console.warn(`404 triggered for ${req.method} ${req.originalUrl}`);
-  next(new ExpressError('Page Not Found', 404));
-});
-
 // Silently ignore requests for .json files (return 204 No Content instead of 404)
 // Prevents "Page Not Found" errors in the console for missing JSON files
 app.use((req, res, next) => {
@@ -133,8 +128,9 @@ app.use("/review", routes.reviewRoute);
 app.use("/user", routes.userRoute);
 
 // The correct and professionl way to send error 404 message.
-app.all("*", (req, res, next) => {
-  next(new expressError("Page Not Found", 404));
+app.all('*', (req, res, next) => {
+  console.warn(`404 triggered for ${req.method} ${req.originalUrl}`);
+  next(new ExpressError('Page Not Found', 404));
 });
 
 // Our custom error handler.

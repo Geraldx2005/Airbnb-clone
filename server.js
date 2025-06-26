@@ -76,6 +76,11 @@ app.use(session(sessionOptions));
 // middleware for flash messages
 app.use(flash());
 
+// Health check / home route — returns 200 OK with no content
+app.get('/', (req, res) => {
+    res.status(200).end(); // Respond OK with no body
+});
+
 // Middleware for passport initialization and session management.
 app.use(passport.initialize());
 // Middleware for passport session management.
@@ -99,7 +104,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   const silentAssets = [".ico", ".png", ".jpg", ".map", ".json"];
   if (silentAssets.some((ext) => req.url.endsWith(ext))) {
-    return res.status(204).end(); // ← this ends the request too early!
+    return res.status(204).end();
   }
   next();
 });

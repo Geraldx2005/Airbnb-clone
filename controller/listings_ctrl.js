@@ -8,6 +8,7 @@ const geocodingClient = mbxGeocoding({ accessToken: mapboxToken });
 // Renders the home page with all listings from the database.
 const renderHomePage = async (req, res) => {
   let allListings = await Listing.find({}).sort({ _id: -1 });
+  console.log(req.session);
   res.render("listings/home.ejs", { allListings, title: "Airbnb - Home", pageCSS: "home" });
 };
 

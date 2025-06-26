@@ -6,6 +6,8 @@ import { fileURLToPath } from "url";
 import methodOverride from "method-override";
 import ejsMate from "ejs-mate";
 import session from "express-session";
+// import session before importing mongoStore
+import MongoStore from "connect-mongo";
 import flash from "connect-flash";
 import passport from "passport";
 import LocalStrategy from "passport-local";
@@ -38,9 +40,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
 
+// The session store is a database that stores session data.
+// The "store.crypto.secret" encrypts the session data before saving it in MongoDB for extra security.
+let store = MongoStore.create({
+  mongoUrl: process.env.MONGO_URL,
+  crypto: {
+    secret: "the secretkey"
+  },
+  touchAfter: 24 * 3600,
+});
+
+// Error handling for the session store.
+store.on("error", (err) => {
+  console.log("ERROR in mongodb session store", err);
+})
+
 // Setting the session options.
 // Note: The secret key should be stored in an environment variable in production.
+// The "sessionOptions.secret" signs the session cookie sent to the browser.
 let sessionOptions = {
+  // Stores the session data in the MDB database.
+  store,
   secret: "thesecretkey",
   resave: false,
   saveUninitialized: true,

@@ -24,6 +24,7 @@ const renderAddForm = (req, res, next) => {
 // Renders the show page for a specific listing by its ID.
 const renderShowPage = async (req, res) => {
   let { id } = req.params;
+  let mapAccessInfo = process.env.MAP_TOKEN;
   // using nested populate to get the reviews and the owner details in the listings document.
   let listingData = await Listing.findById(id)
     .populate({ path: "reviews", populate: { path: "author" } })
@@ -34,7 +35,7 @@ const renderShowPage = async (req, res) => {
     res.redirect("/listings");
     return;
   }
-  res.render("listings/show.ejs", { listingData, title: "Listing Details", pageCSS: "show" });
+  res.render("listings/show.ejs", { listingData, mapAccessInfo, title: "Listing Details", pageCSS: "show" });
 };
 
 // Creates a new listing and adds it to the database.

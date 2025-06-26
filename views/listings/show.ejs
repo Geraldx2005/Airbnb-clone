@@ -103,16 +103,17 @@
     <h4>Where you'll be</h4>
     <p><%= listingData.location %>, <%= listingData.country %></p>
     <!-- Map container with listing's coordinates passed as a data attribute -->
-    <div id="map" data-listing-info="<%= JSON.stringify(listingData) %>"></div>
+    <div id="map" data-map-access-info="<%= mapAccessInfo %>" data-listing-info="<%= JSON.stringify(listingData) %>"></div>
   </div>
 </div>
 
 <script>
   let listingInfo = document.getElementById("map").dataset.listingInfo;
+  let mapAccessInfo = document.getElementById("map").dataset.mapAccessInfo;
   let listingDetails = JSON.parse(listingInfo);
 
   // Initialize the Mapbox map
-  mapboxgl.accessToken = process.env.MAP_TOKEN;
+  mapboxgl.accessToken = mapAccessInfo;
   const map = new mapboxgl.Map({
     container: "map", // container ID
     // style: "mapbox://styles/mapbox/satellite-streets-v12", // style URL

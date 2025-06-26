@@ -45,7 +45,7 @@ app.use(methodOverride("_method"));
 let store = MongoStore.create({
   mongoUrl: process.env.MONGO_URL,
   crypto: {
-    secret: "the secretkey"
+    secret: process.env.SECRET,
   },
   touchAfter: 24 * 3600,
 });
@@ -61,7 +61,7 @@ store.on("error", (err) => {
 let sessionOptions = {
   // Stores the session data in the MDB database.
   store,
-  secret: "thesecretkey",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {

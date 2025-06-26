@@ -112,8 +112,7 @@
   let listingDetails = JSON.parse(listingInfo);
 
   // Initialize the Mapbox map
-  mapboxgl.accessToken =
-    "pk.eyJ1IjoiZ2VyYWxkeDIwMDUiLCJhIjoiY21jNmVhaDh2MTFldzJqb2wyM2NpanlqeSJ9.6T8PrQ0sFd_Khong_e6uLA";
+  mapboxgl.accessToken = process.env.MAP_TOKEN;
   const map = new mapboxgl.Map({
     container: "map", // container ID
     // style: "mapbox://styles/mapbox/satellite-streets-v12", // style URL

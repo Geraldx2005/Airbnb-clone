@@ -15,7 +15,7 @@ async function seedDB() {
 
     // Modifying the sample data to include a fixed owner ID and coordinates.
     let modSampleData = sampleData.map((item) => {
-        return {...item, owner: "684820a668ad51dbf0d6be4e"};
+        return {...item, owner: "685c30a52a9fd38c5f61c8e4"};
     });
 
     // Adding fixed coordinated for all listings.
